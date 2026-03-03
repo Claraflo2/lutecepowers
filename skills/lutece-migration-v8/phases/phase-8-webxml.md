@@ -14,6 +14,7 @@ Mainly for plugins with web.xml fragments.
 2. Update `<min-core-version>` to `8.0.0`
 3. **Remove `<application-class>`** from `<application>` elements — XPages are auto-discovered via CDI
 4. Update `<icon-url>` if new icon paths are used
+5. **`<class>` tag — NEVER change it.** If the v7 plugin.xml uses a custom class (e.g. `MyPlugin` extending `PluginDefaultImplementation`), keep it as-is. It may contain `init()` logic required at runtime (registering ImageResourceProvider, FileResourceProvider, etc.). Only use `PluginDefaultImplementation` if the v7 plugin already used it.
 
 ```xml
 <!-- BEFORE -->
