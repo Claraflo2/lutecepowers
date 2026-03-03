@@ -36,7 +36,7 @@ Run these grep checks on `pom.xml`:
 - `<springVersion>` → FAIL: Spring version property still defined
 
 Verify:
-- Parent POM `lutece-global-pom` version is `8.x` or `8.0.0-SNAPSHOT`
+- Parent POM `lutece-global-pom` version starts with `8.` (e.g. `8.0.0`, `8.1.0`)
 - `lutece-core` dependency is v8 (for plugins/modules)
 - Repository URLs use `https://` not `http://`
 

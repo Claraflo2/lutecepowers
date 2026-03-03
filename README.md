@@ -45,9 +45,9 @@ Skills are multi-step procedures loaded progressively by Claude on demand.
 |----------|-------|
 | `~/.lutece-references/` | Lutece 8 repos cloned at session start — read for dependency source code (never jar decompilation) |
 | `migrations-samples/` | Real migration analyses (diffs per category) — consulted as pattern reference |
-| GitHub (`lutece-platform`, `lutece-secteur-public`) | Each Lutece dependency is checked for a v8 branch, and its `pom.xml` is read to confirm `parent version = 8.0.0-SNAPSHOT` |
+| GitHub (`lutece-platform`, `lutece-secteur-public`) | Each Lutece dependency is checked for a v8 branch, and its `pom.xml` is read to confirm parent version starts with `8.` |
 
-**Phase 0 — Analysis & dependency gate:** before any code change, every Lutece dependency in `pom.xml` is verified. The AI searches for v8 branches (`develop_core8` > `develop8` > `develop8.x` > `develop`), then reads the actual `pom.xml` on each candidate branch to confirm the parent version is `8.0.0-SNAPSHOT` — even branches with unexpected names are inspected. If a dependency has no v8 version → **migration is blocked**, the user is asked to migrate that dependency first. A version map (artifactId → v8 version) is produced for subsequent phases. Each v8 Lutece dependency is cloned into `~/.lutece-references/` for later use as source code reference during the migration.
+**Phase 0 — Analysis & dependency gate:** before any code change, every Lutece dependency in `pom.xml` is verified. The AI searches for v8 branches (`develop_core8` > `develop8` > `develop8.x` > `develop`), then reads the actual `pom.xml` on each candidate branch to confirm the parent version starts with `8.` — even branches with unexpected names are inspected. If a dependency has no v8 version → **migration is blocked**, the user is asked to migrate that dependency first. A version map (artifactId → v8 version) is produced for subsequent phases. Each v8 Lutece dependency is cloned into `~/.lutece-references/` for later use as source code reference during the migration.
 
 **Phases 1–12 — Code transformations (no build):** POM, javax→jakarta, Spring→CDI, events, cache, config, REST, web.xml, JspBean, JSP, templates, logging. Each phase verified by grep checks only (project won't compile until phase 13).
 

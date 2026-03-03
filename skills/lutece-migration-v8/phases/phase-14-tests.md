@@ -2,7 +2,7 @@
 
 ## Test dependency — MANDATORY
 
-Tests extending `LuteceTestCase` require `library-lutece-unit-testing`. The global-pom `8.0.0-SNAPSHOT` manages the version — just declare it:
+Tests extending `LuteceTestCase` require `library-lutece-unit-testing`. The global-pom `8.x` manages the version — just declare it:
 
 ```xml
 <dependency>

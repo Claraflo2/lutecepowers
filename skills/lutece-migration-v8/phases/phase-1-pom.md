@@ -2,8 +2,8 @@
 
 ## Steps
 
-1. Update parent POM: `lutece-global-pom` version `6.x.x` → `8.0.0-SNAPSHOT`
-2. Update artifact version: **increment the current major version by 1** and set to `X+1.0.0-SNAPSHOT` (e.g. `4.2.1-SNAPSHOT` → `5.0.0-SNAPSHOT`, `2.0.3-SNAPSHOT` → `3.0.0-SNAPSHOT`). Do NOT set it to `8.0.0-SNAPSHOT` — that is the core/parent version, not the plugin's own version
+1. Update parent POM: `lutece-global-pom` version `6.x.x` → latest `8.x` release (currently `8.0.0`). Use the release version, NOT a SNAPSHOT
+2. Update artifact version: **increment the current major version by 1** and set to `X+1.0.0-SNAPSHOT` (e.g. `4.2.1-SNAPSHOT` → `5.0.0-SNAPSHOT`, `2.0.3-SNAPSHOT` → `3.0.0-SNAPSHOT`). Do NOT set it to `8.0.0` — that is the core/parent version, not the plugin's own version
 3. Remove Spring dependencies:
    - `spring-aop`, `spring-beans`, `spring-context`, `spring-core`, `spring-orm`, `spring-tx`, `spring-web`
 4. Remove old cache dependencies:
@@ -12,7 +12,7 @@
 6. Remove old persistence: `org.eclipse.persistence:javax.persistence`
 7. Remove Quartz if present: `org.quartz-scheduler:quartz`
 8. Remove Scannotation if present: `org.scannotation:scannotation`
-9. Update `lutece-core` dependency version to `8.0.0-SNAPSHOT` (for plugins/modules)
+9. Update `lutece-core` dependency version to latest `8.x` release range `[8.0.0,)` (for plugins/modules). Use the release version, NOT a SNAPSHOT
 10. Update all Lutece dependency versions using the **dependency version map from Phase 0**. Each dependency's v8 version was already verified and extracted — use those exact versions. Do NOT guess or hardcode versions
 11. Add new dependencies if needed (JCache API, classgraph, etc.)
 12. Remove `<springVersion>` property if present
@@ -41,6 +41,6 @@ Also update repository URLs from `http://` to `https://`.
 ## Verification (MANDATORY before next phase)
 
 1. Verify POM has no `org.springframework`, `net.sf.ehcache`, `javax.mail` dependencies
-2. Verify parent POM is `8.0.0-SNAPSHOT` and core dependency is v8
+2. Verify parent POM version starts with `8.` (e.g. `8.0.0`) and core dependency is v8
 3. **No build** — code still uses v7 imports, compilation will fail until Phase 3+
 4. Mark task as completed when all POM checks pass

@@ -21,10 +21,10 @@
 
 For each **Lutece dependency** found in `pom.xml` (groupId `fr.paris.lutece.*`):
 
-1. **Check `~/.lutece-references/`** — If the repo is already cloned, read its `pom.xml` to confirm `<parent><version>` is `8.0.0-SNAPSHOT`
+1. **Check `~/.lutece-references/`** — If the repo is already cloned, read its `pom.xml` to confirm `<parent><version>` starts with `8.` (e.g. `8.0.0`, `8.0.0-SNAPSHOT`, `8.1.0`)
 2. **If not found locally, search GitHub** — Search `lutece-platform` and `lutece-secteur-public` orgs
 3. **Find the v8 branch** — Priority: `develop_core8` > `develop8` > `develop8.x` > `develop`
-4. **Verify v8 compatibility** — Fetch the remote `pom.xml` and check parent version is `8.0.0-SNAPSHOT`
+4. **Verify v8 compatibility** — Fetch the remote `pom.xml` and check parent version starts with `8.`
 5. **Read the v8 version** — Extract `<version>` from the dependency's v8 pom.xml. This is the version to use in Phase 1
 6. **Clone into `~/.lutece-references/`** for later exploration
 
